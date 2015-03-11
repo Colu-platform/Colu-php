@@ -1,0 +1,14 @@
+.buildpath
+vendor/*
+.settings/org.eclipse.php.core.prefs
+.settings/org.eclipse.wst.common.project.facet.core.xml
+.project
+composer.lock
+composer.phar
+example.php
+./front.php
+./register_user.php
+./verify_user.php
+/front.php
+/register_user.php
+/verify_user.php

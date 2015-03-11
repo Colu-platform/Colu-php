@@ -1,0 +1,31 @@
+{
+	"name" : "colu/colu",
+	"description" : "colu php SDK",
+	"keywords" : [
+		"bitcoin",
+		"php",
+		"bip32",
+		"electrum",
+		"ecc",
+		"transactions",
+		"HD wallet",
+		"btc",
+		"cryptocurrency",
+		"DER"
+	],
+	"license" : [
+		"MIT"
+	],
+	"require" : {
+		"php" : ">=5.4",
+		"bitcoin-php/bitcoin-ecdsa" : "1.1",
+		"endroid/qrcode" : ">=1.5.0",
+		"bitwasp/bitcoin-lib" : "1.0.2"
+	},
+	"autoload" : {
+		"psr-0" : {
+			"Colu\\ColuSDK" : "src"
+		}
+	},
+	"minimum-stability" : "dev"
+}

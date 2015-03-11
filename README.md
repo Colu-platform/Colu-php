@@ -11,7 +11,7 @@ Create a `composer.json` file in your project root:
 ```code
     {
         "require": {
-            "Colu/Colu": "1.0.1"
+            "Colu/Colu": "1.0.3"
         }
     }
 ```

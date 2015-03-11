@@ -1,5 +1,5 @@
 <?php
-require_once ('vendor/autoload.php');
+require_once ('../vendor/autoload.php');
 use Colu\ColuSDK\Colu;
 
 // get info from request

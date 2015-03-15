@@ -84,15 +84,24 @@ class Colu {
 	 * @return boolean
 	 */
 	public function verifyUser($username, $userId, $addressIndex = 0) {
+		// create a registration message
 		$data = $this->createRegistrationMessage($username);
+		
+		// create a user and import the extended key
 		$user = new User($userId);
+		
+		// add the address to the registration message
 		$data["client_address"] = $user->getAddress($addressIndex);
 		$data["token_details"] = 'token';
 		
 		$url = $this->coluHost."/check_token_address";
 		
+		// send the request
 		if ($res = $this->sendRequest($url, $data)) {
+			// parse response
 			$body = json_decode($res,true);
+			
+			// verify the message
 			if ($this->verifyMessage($data, $body["verified_client_signature"], $body["client_public_key"], $body["verified"])) {
 				return true;
 			}
@@ -365,10 +374,12 @@ class Colu {
 		$QRcodeURL = $this->coluHost . "/qr?qr=" . $qrRegCode;
 		
 		// make sure we got a message from the server
-		if ($qrRegCode == false)
+		if ($qrRegCode == false){
+			$this->error = "Erorr could not recieve QR from server";
 			return false;
-			
-			// create the QR image URI
+		}
+		
+		// create the QR image URI
 		$qrCode = new QrCode ();
 		
 		$qrCode->setText ( $QRcodeURL );
@@ -377,6 +388,8 @@ class Colu {
 		$qrCode->setErrorCorrection ( 'high' );
 		$qrCode->setLabelFontSize ( 16 );
 		
+		// we send back the original message so that it can be sent back to the server for vrification
+		// this can also be accomplished by using a session which i opted not to use here
 		return array (
 				"qr" => $qrCode->getDataUri (),
 				"code" => $qrRegCode,
@@ -419,7 +432,7 @@ class Colu {
 		if (substr ( $points ["S"], 0, 1 ) > "7")
 			$points ["S"] = "00" . $points ["S"];
 			
-			// DER signature encoding
+		// DER signature encoding
 		$signature = '02' . dechex ( strlen ( hex2bin ( $points ['R'] ) ) ) . $points ['R'] . '02' . dechex ( strlen ( hex2bin ( $points ['S'] ) ) ) . $points ['S'];
 		$signature = '30' . dechex ( strlen ( hex2bin ( $signature ) ) ) . $signature;
 		$signature = base64_encode ( pack ( 'H*', $signature ) );

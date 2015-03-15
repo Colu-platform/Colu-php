@@ -11,7 +11,7 @@ Create a `composer.json` file in your project root:
 ```code
     {
         "require": {
-            "Colu/Colu": "1.0.3"
+            "Colu/Colu": "1.0.4"
         }
     }
 ```
@@ -26,7 +26,7 @@ Your ```privateKey``` is what defines your company.
 
 ```php
 require_once ('vendor/autoload.php');
-use Colu\Colu;
+use Colu\ColuSDK\Colu;
 $colu = new Colu('my_company', 'testnet');
 
 // This is your private key, keep it safe!!!
@@ -38,7 +38,7 @@ When you want to use our module in your server you need to generate keys only on
 
 ```php
 require_once ('vendor/autoload.php');
-use Colu\Colu;
+use Colu\ColuSDK\Colu;
 
 $privateKey = 'cQQy71GeXGeFWnDtypas2roY2qrk3KWjJLCxoFqc2wibXr2wWxie'; // this is the WIF version of a private key
 

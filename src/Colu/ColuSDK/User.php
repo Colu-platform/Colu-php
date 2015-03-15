@@ -26,12 +26,12 @@ class User {
 		$tuple = BIP32::get_definition_tuple($this->extendedKey, "0/".$index);
 		
 		// derive key
-		$a = BIP32::CKD($this->extendedKey, $tuple);
+		$key = BIP32::CKD($this->extendedKey, $tuple);
 		
 		// get the address
-		$b = BIP32::key_to_address($a[0]);
+		$address = BIP32::key_to_address($key[0]);
 		
-		return $b;
+		return $address;
 	}
 	public function getPublicKey() {
 		return $this->userData ["key"];

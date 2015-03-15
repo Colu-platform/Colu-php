@@ -385,7 +385,7 @@ class Colu {
 		$qrCode->setText ( $QRcodeURL );
 		$qrCode->setSize ( 300 );
 		$qrCode->setPadding ( 10 );
-		$qrCode->setErrorCorrection ( 'high' );
+		$qrCode->setErrorCorrection ( 'medium' );
 		$qrCode->setLabelFontSize ( 16 );
 		
 		// we send back the original message so that it can be sent back to the server for vrification
